@@ -1,0 +1,28 @@
+[project]
+name = "rlrl"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "rlgym-ppo",
+    "rlgym-sim",
+    "rlviser-py>=0.6.13",
+    "rocketsim>=2.1.1.post4",
+    "torch>=2.9.1",
+    "torchvision>=0.24.1",
+]
+
+[tool.uv.sources]
+rlgym-sim = { git = "https://github.com/AechPro/rocket-league-gym-sim", rev = "main" }
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+rlgym-ppo = { git = "https://github.com/USA-RedDragon/rlgym-ppo", rev = "main" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.setuptools.packages.find]
+where = ["rlrl"]
