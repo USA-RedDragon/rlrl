@@ -8,10 +8,10 @@ from rlgym_ppo import Learner
 
 from rlrl.env import get_env_builder
 
-import multiprocessing as mp
-mp.set_start_method("spawn", force=True)
-
 def get_sweep_trainer(learner_kwargs, config, wandb_project):
+    import multiprocessing as mp
+    mp.set_start_method("spawn", force=True)
+
     def sweep_trainer(wandb_cfg=None):
         run = wandb.init(project=wandb_project, config=wandb_cfg, name=None, reinit=True)
         run.name = run.id
@@ -24,10 +24,10 @@ def get_sweep_trainer(learner_kwargs, config, wandb_project):
 
         learner = Learner(
             get_env_builder(config),
+            **learner_kwargs,
             wandb_run=run,
             wandb_run_name=run.name,
             checkpoints_save_folder=f"data/checkpoints/{run.id}",
-            **learner_kwargs,
         )
 
         print(f"\n=== Starting W&B run: {run.name} ===\n")
