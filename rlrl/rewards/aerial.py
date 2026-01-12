@@ -17,6 +17,10 @@ class InAirReward(RewardFunction):
             return 0
 
 class SimpleAerialReward(RewardFunction):
+    def __init__(self, min_height: float = 200.0):
+        super().__init__()
+        self.min_height = min_height
+
     def reset(self, initial_state: GameState):
         pass
 
@@ -24,9 +28,8 @@ class SimpleAerialReward(RewardFunction):
         # If player touches ball and is NOT on ground
         if player.ball_touched and not player.on_ground:
             # Reward based on height relative to ceiling.
-            # Touching ball on ground = 0 reward
-            # Touching ball at ceiling = 1.0 reward
-            return player.car_data.position[2] / common_values.CEILING_Z
+            if player.car_data.position[2] > self.min_height:
+                return player.car_data.position[2] / common_values.CEILING_Z
             
         return 0.0
 
@@ -64,11 +67,13 @@ class AerialTouchImpulseReward(RewardFunction):
         min_impulse: float = 100.0,
         impulse_scale: float = 0.001,
         min_boost_spent: float = 0.02,
+        min_height: float = 200.0,
     ):
         super().__init__()
         self.min_impulse = min_impulse
         self.impulse_scale = impulse_scale
         self.min_boost_spent = min_boost_spent
+        self.min_height = min_height
         self._prev_ball_vel = None
         self._prev_boost = None
 
@@ -80,6 +85,9 @@ class AerialTouchImpulseReward(RewardFunction):
         ball_vel = np.asarray(state.ball.linear_velocity)
 
         reward = 0.0
+
+        if player.car_data.position[2] < self.min_height:
+            return 0.0
 
         if self._prev_ball_vel is not None and self._prev_boost is not None:
             boost_spent = self._prev_boost - player.boost_amount
