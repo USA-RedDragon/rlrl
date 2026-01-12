@@ -22,6 +22,8 @@ def get_sweep_trainer(learner_kwargs, config, wandb_project):
             if key in learner_kwargs:
                 learner_kwargs[key] = value
 
+        learner_kwargs["timestep_limit"] = 3_000_000
+
         learner = Learner(
             get_env_builder(config),
             **learner_kwargs,
