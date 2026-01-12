@@ -20,7 +20,8 @@ config = {
     "hyperparameters": {
         "timestep_limit": 10e15,
         "exp_buffer_size": 120_000,
-        "ts_per_iteration": 25_000,
+        "ts_per_iteration": 5_000,
+        "sac_policy_delay": 3,
         "sac_batch_size": 256,
         "sac_ent_coef": 'auto',
         "sac_learning_rate": 3e-4,

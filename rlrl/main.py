@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run SAC Agent")
     parser.add_argument("--n_proc", type=int, default=os.cpu_count(), help="Number of parallel environment processes.")
     parser.add_argument("--seed", type=int, default=0, help="Random seed for training.")
-    parser.add_argument("--config", type=str, default="rlrl.config.ball", help="Python package path of the config to use, i.e. 'rlrl.config.ball'.")
+    parser.add_argument("--config", type=str, default="rlrl.config.aerial", help="Python package path of the config to use, i.e. 'rlrl.config.aerial'.")
     parser.add_argument("--sweep_id", type=str, default=None, help="Sweep mode only: Existing W&B sweep ID to join.")
     parser.add_argument("--sweep_config", type=str, default=None, help="Sweep mode only: Python package path of the config to use, i.e. 'rlrl.config.sweeps.hyperparameters'.")
     parser.add_argument("--sweep_project", type=str, default="rlgym-sac", help="Sweep mode only: W&B project name to use.")
