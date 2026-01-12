@@ -6,11 +6,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "rlgym-ppo",
+    "rlgym-sac",
     "rlgym-sim",
-    "rlviser-py>=0.6.13",
-    "rocketsim>=2.1.1.post4",
     "torch>=2.9.1",
-    "torchvision>=0.24.1",
 ]
 
 [tool.uv.sources]
@@ -18,6 +16,7 @@ rlgym-sim = { git = "https://github.com/AechPro/rocket-league-gym-sim", rev = "m
 torch = { index = "pytorch" }
 torchvision = { index = "pytorch" }
 rlgym-ppo = { git = "https://github.com/USA-RedDragon/rlgym-ppo", rev = "main" }
+rlgym-sac = { git = "https://github.com/USA-RedDragon/rlgym-sac", rev = "main" }
 
 [[tool.uv.index]]
 name = "pytorch"

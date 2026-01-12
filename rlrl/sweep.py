@@ -4,7 +4,7 @@ Uses config.py/env.py/metrics.py just like main.py, but with sweep-driven overri
 """
 
 import wandb
-from rlgym_ppo import Learner
+from rlgym_sac import Learner
 
 from rlrl.env import get_env_builder
 

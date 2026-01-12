@@ -1,6 +1,6 @@
 import numpy as np
 
-from rlgym_ppo.util import MetricsLogger
+from rlgym_sac.util import MetricsLogger
 from rlgym_sim.utils.gamestates import GameState
 
 class Logger(MetricsLogger):
