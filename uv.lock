@@ -746,7 +746,7 @@ wheels = [
 [[package]]
 name = "rlgym-ppo"
 version = "1.3.13"
-source = { git = "https://github.com/USA-RedDragon/rlgym-ppo?rev=main#05a9855c0e4affa0f72620afa7a09fe0a26b7a26" }
+source = { git = "https://github.com/USA-RedDragon/rlgym-ppo?rev=main#fea59ddc3501c6a19a7658f427c47858ea8a231c" }
 dependencies = [
     { name = "cloudpickle" },
     { name = "filelock" },

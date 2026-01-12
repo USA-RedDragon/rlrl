@@ -8,6 +8,7 @@ from rlgym_ppo import Learner
 from rlrl.env import get_env_builder
 from rlrl.metrics import Logger
 from rlrl import sweep
+from rlrl.consts import GAME_TICK_RATE, TICK_SKIP
 
 def main():
     parser = argparse.ArgumentParser(description="Run PPO Agent")
@@ -35,6 +36,7 @@ def main():
         "standardize_returns": True,
         "standardize_obs": False,
         "log_to_wandb": True,
+        "load_wandb": True,
     }
 
     for key, value in config["hyperparameters"].items():
@@ -43,7 +45,13 @@ def main():
     if args.mode == 'train':
         Learner(get_env_builder(config), **learner_kwargs).learn()
     elif args.mode == 'eval':
-        print("Evaluation mode is not implemented yet.")
+        learner_kwargs["render_delay"] = TICK_SKIP / GAME_TICK_RATE
+        learner_kwargs["log_to_wandb"] = False
+        learner_kwargs["load_wandb"] = False
+        learner_kwargs["n_proc"] = 1
+        learner_kwargs["min_inference_size"] = 1
+        learner_kwargs["ts_per_iteration"] = 1
+        Learner(get_env_builder(config), **learner_kwargs).evaluate()
     elif args.mode == 'sweep':
         learner_kwargs["instance_launch_delay"] = 0.05
 
@@ -59,6 +67,8 @@ def main():
             print(f"Created new sweep {sweep_id}")
 
         wandb.agent(sweep_id, function=sweep.get_sweep_trainer(learner_kwargs, config, args.sweep_project), count=None, project=args.sweep_project)
+    else:
+        raise ValueError(f"Invalid mode '{args.mode}'. Must be 'train', 'eval' or 'sweep'.")
 
 if __name__ == "__main__":
     main()
