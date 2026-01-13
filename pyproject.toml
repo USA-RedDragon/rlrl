@@ -9,6 +9,7 @@ dependencies = [
     "rlgym-sim",
     "rocketsim>=2.1.1.post4",
     "torch>=2.9.1",
+    "triton-windows; sys_platform == 'win32'",
 ]
 
 [tool.uv.sources]
