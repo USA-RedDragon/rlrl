@@ -35,9 +35,9 @@ config = {
     "hyperparameters": {
         "timestep_limit": 10e15,
         "exp_buffer_size": 12_500_000,
-        "ts_per_iteration": 50,
+        "ts_per_iteration": 5000,
         "sac_policy_delay": 3,
-        "sac_batch_size": 4096,
+        "sac_batch_size": 1024,
         "sac_ent_coef": 'auto',
         "sac_learning_rate": 3e-4,
         "sac_learning_starts": 10_000,

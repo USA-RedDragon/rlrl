@@ -657,7 +657,7 @@ wheels = [
 [[package]]
 name = "rlgym-sac"
 version = "1.3.13"
-source = { git = "https://github.com/USA-RedDragon/rlgym-sac?rev=main#ab4e1d6f85e4c820267cd1bd15828227ee18776e" }
+source = { git = "https://github.com/USA-RedDragon/rlgym-sac?rev=main#4b7c025ecc5a62eb44fd7442c1388464735c5e4d" }
 dependencies = [
     { name = "gymnasium" },
     { name = "numpy" },
