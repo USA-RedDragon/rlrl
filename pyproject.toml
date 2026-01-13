@@ -16,7 +16,7 @@ dependencies = [
 rlgym-sim = { git = "https://github.com/AechPro/rocket-league-gym-sim", rev = "a1240530239d6b7671147b4f97e9b5e130d0acce" }
 torch = { index = "pytorch" }
 torchvision = { index = "pytorch" }
-rlgym-sac = { git = "https://github.com/USA-RedDragon/rlgym-sac", rev = "dde61319dc62d13bffd7628056edcf0cc65d7331" }
+rlgym-sac = { git = "https://github.com/USA-RedDragon/rlgym-sac", rev = "5f035107ee93d6973245056a3580fcf100a99fdc" }
 
 [[tool.uv.index]]
 name = "pytorch"
