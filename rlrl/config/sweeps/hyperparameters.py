@@ -13,7 +13,5 @@ config = {
         "sac_train_freq": {"min": 4, "max": 8},
         "sac_tau": {"min": 0.005, "max": 0.02},
         "sac_gamma": {"min": 0.90, "max": 0.98},
-        "policy_layer_sizes": {"values": [(256, 256), (256, 256, 256), (512, 512)]},
-        "critic_layer_sizes": {"values": [(256, 256), (256, 256, 256), (512, 512)]},
     }
 }
