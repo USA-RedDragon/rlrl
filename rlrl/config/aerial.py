@@ -45,8 +45,8 @@ config = {
         "sac_gradient_steps": 1,
         "sac_tau": 0.005,
         "sac_gamma": 0.99,
-        "policy_layer_sizes": (256, 256, 256),
-        "critic_layer_sizes": (256, 256, 256),
+        "policy_layer_sizes": (256, 256),
+        "critic_layer_sizes": (256, 256),
         "save_every_ts": 1_000_000,
     }
 }
