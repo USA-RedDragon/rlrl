@@ -670,7 +670,7 @@ dependencies = [
 [[package]]
 name = "rlgym-sim"
 version = "1.2.6"
-source = { git = "https://github.com/AechPro/rocket-league-gym-sim?rev=main#a1240530239d6b7671147b4f97e9b5e130d0acce" }
+source = { git = "https://github.com/AechPro/rocket-league-gym-sim?rev=a1240530239d6b7671147b4f97e9b5e130d0acce#a1240530239d6b7671147b4f97e9b5e130d0acce" }
 dependencies = [
     { name = "gym" },
     { name = "numpy" },
@@ -691,7 +691,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "rlgym-sac", git = "https://github.com/USA-RedDragon/rlgym-sac?rev=main" },
-    { name = "rlgym-sim", git = "https://github.com/AechPro/rocket-league-gym-sim?rev=main" },
+    { name = "rlgym-sim", git = "https://github.com/AechPro/rocket-league-gym-sim?rev=a1240530239d6b7671147b4f97e9b5e130d0acce" },
     { name = "rocketsim", specifier = ">=2.1.1.post4" },
     { name = "torch", specifier = ">=2.9.1", index = "https://download.pytorch.org/whl/cu130" },
     { name = "triton-windows", marker = "sys_platform == 'win32'" },
