@@ -27,7 +27,7 @@ config = {
             time_scale=0.02
         ), 4),
         ("air_height", AirHeightReward(
-            height_scale=1.0
+            height_scale=0.5
         ), 2),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
             min_boost=0.7
