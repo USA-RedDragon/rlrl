@@ -591,7 +591,7 @@ wheels = [
 [[package]]
 name = "rlgym-sac"
 version = "1.3.13"
-source = { git = "https://github.com/USA-RedDragon/rlgym-sac?rev=15b6c514c0ba5383e0602ffe368e38104fc2cdf6#15b6c514c0ba5383e0602ffe368e38104fc2cdf6" }
+source = { git = "https://github.com/USA-RedDragon/rlgym-sac?rev=93fe8848f8b90508952eeedc5797cbdeb2a74747#93fe8848f8b90508952eeedc5797cbdeb2a74747" }
 dependencies = [
     { name = "gymnasium" },
     { name = "numpy" },
@@ -623,7 +623,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "rlgym-sac", git = "https://github.com/USA-RedDragon/rlgym-sac?rev=15b6c514c0ba5383e0602ffe368e38104fc2cdf6" },
+    { name = "rlgym-sac", git = "https://github.com/USA-RedDragon/rlgym-sac?rev=93fe8848f8b90508952eeedc5797cbdeb2a74747" },
     { name = "rlgym-sim", git = "https://github.com/AechPro/rocket-league-gym-sim?rev=a1240530239d6b7671147b4f97e9b5e130d0acce" },
     { name = "rocketsim", specifier = ">=2.1.1.post4" },
     { name = "torch", specifier = ">=2.9.1", index = "https://download.pytorch.org/whl/cu130" },
