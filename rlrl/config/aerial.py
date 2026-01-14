@@ -17,7 +17,7 @@ config = {
         ), 1),
         ("vel_player_to_ball", VelocityPlayerToBallReward(), 5),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 8),
-        ("save_boost", SaveBoostReward(), 2),
+        ("save_boost", SaveBoostReward(), 0.4),
         ("aerial_touch_impulse", AerialTouchImpulseReward(
             min_impulse=200,
             impulse_scale=0.005
