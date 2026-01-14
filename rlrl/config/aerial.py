@@ -17,11 +17,11 @@ config = {
         ), 1),
         ("vel_player_to_ball", VelocityPlayerToBallReward(), 5),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 8),
-        ("save_boost", SaveBoostReward(), 0.4),
+        ("save_boost", SaveBoostReward(), 0.45),
         ("simple_aerial", SimpleAerialReward(), 8),
         ("air_time", AirTimeReward(
             time_scale=0.02
-        ), 4),
+        ), 3),
         ("air_height", AirHeightReward(
             height_scale=0.5
         ), 2),
