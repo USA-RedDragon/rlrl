@@ -15,7 +15,7 @@ config = {
             boost_pickup=8,
             demo=8,
         ), 1),
-        ("vel_player_to_ball", VelocityPlayerToBallReward(), 4),
+        ("vel_player_to_ball", VelocityPlayerToBallReward(), 5),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 8),
         ("save_boost", SaveBoostReward(), 2),
         ("aerial_touch_impulse", AerialTouchImpulseReward(
@@ -31,7 +31,7 @@ config = {
         ), 2),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
             min_boost=0.7
-        ), 4),
+        ), 3),
     ],
     "terminal_conditions": [
         GoalScoredCondition(),
