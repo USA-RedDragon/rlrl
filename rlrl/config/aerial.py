@@ -15,7 +15,7 @@ config = {
             boost_pickup=8,
             demo=8,
         ), 1),
-        ("vel_player_to_ball", VelocityPlayerToBallReward(), 5),
+        ("vel_player_to_ball", VelocityPlayerToBallReward(), 2.5),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 8),
         ("save_boost", SaveBoostReward(), 0.45),
         ("simple_aerial", SimpleAerialReward(), 8),
