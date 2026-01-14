@@ -60,8 +60,12 @@ class AirHeightReward(RewardFunction):
         if player.on_ground:
             return 0.0
 
-        ball_height = max(0.0, state.ball.position[2])
-        return min(ball_height / self.ceiling_height, 1.0)
+        # Reward height, but cap it at the ball's height. 
+        # Encourages climbing to the ball, but not flying uselessly high.
+        player_height = player.car_data.position[2]
+        ball_height = state.ball.position[2]
+        
+        return min(player_height, ball_height) / self.ceiling_height
 
 
 
