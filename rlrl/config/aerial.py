@@ -9,20 +9,20 @@ from rlrl.consts import GAME_TICK_RATE, TICK_SKIP
 
 config = {
     "rewards": [
-        ("touch", TouchReward(), 12),
-        ("team_goal", TeamGoalReward(), 50),
-        ("concede", ConcedeReward(), 50),
-        ("boost_pickup", BoostPickupReward(), 8),
-        ("demo", DemoReward(), 8),
-        ("vel_player_to_ball", VelocityPlayerToBallReward(), 2.5),
-        ("vel_ball_to_goal", VelocityBallToGoalReward(), 5),
-        ("save_boost", SaveBoostReward(), 0.1),
-        ("simple_aerial", SimpleAerialReward(), 4),
-        ("air_time", AirTimeReward(), 0.3),
-        ("air_height", AirHeightReward(), 0.4),
+        ("touch", TouchReward(), 2.0),
+        ("team_goal", TeamGoalReward(), 10.0),
+        ("concede", ConcedeReward(), -10.0),
+        ("boost_pickup", BoostPickupReward(), 1.5),
+        ("demo", DemoReward(), 1.0),
+        ("vel_player_to_ball", VelocityPlayerToBallReward(), 0.05),
+        ("vel_ball_to_goal", VelocityBallToGoalReward(), 0.1),
+        ("save_boost", SaveBoostReward(), 0.01),
+        ("simple_aerial", SimpleAerialReward(), 5.0),
+        ("air_time", AirTimeReward(), 0.005),
+        ("air_height", AirHeightReward(), 0.005),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
-            min_boost=0.7
-        ), 2),
+            min_boost=0.6
+        ), 0.05),
     ],
     "terminal_conditions": [
         GoalScoredCondition(),
