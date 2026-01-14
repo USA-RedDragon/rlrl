@@ -2,7 +2,7 @@ from rlgym_sim.utils.reward_functions.common_rewards import VelocityPlayerToBall
 from rlgym_sim.utils.state_setters.random_state import RandomState
 from rlgym_sim.utils.terminal_conditions.common_conditions import NoTouchTimeoutCondition, GoalScoredCondition
 
-from rlrl.rewards.aerial import AerialTouchImpulseReward, SimpleAerialReward
+from rlrl.rewards.aerial import AerialTouchImpulseReward, SimpleAerialReward, AerialPlayReward
 from rlrl.rewards.boost import VelocityPlayerToBoostReward
 from rlrl.consts import GAME_TICK_RATE, TICK_SKIP
 
@@ -23,6 +23,10 @@ config = {
                impulse_scale=0.005
             ), 1),
         ("simple_aerial", SimpleAerialReward(), 8),
+        ("in_air_time", AerialPlayReward(
+            time_scale=0.02,
+            height_scale=1.0
+        ), 4),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
                min_boost=0.5
             ), 4),
