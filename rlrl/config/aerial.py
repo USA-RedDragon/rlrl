@@ -54,6 +54,6 @@ config = {
         "sac_gamma": 0.95,
         "policy_layer_sizes": (256, 256),
         "critic_layer_sizes": (256, 256),
-        "save_every_ts": 1_000_000,
+        "save_every_ts": 100_000,
     }
 }
