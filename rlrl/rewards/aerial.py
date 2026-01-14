@@ -33,32 +33,42 @@ class SimpleAerialReward(RewardFunction):
             
         return 0.0
 
-class AerialPlayReward(RewardFunction):
-    def __init__(self, ceiling_height: float = common_values.CEILING_Z, time_scale: float = 0.002, height_scale: float = 1.0):
+
+class AirTimeReward(RewardFunction):
+    def __init__(self, time_scale: float = 0.002):
         super().__init__()
-        self.ceiling_height = ceiling_height
         self.time_scale = time_scale
-        self.height_scale = height_scale
         self._airborne_steps = {}
 
     def reset(self, initial_state: GameState):
         self._airborne_steps.clear()
 
     def get_reward(self, player: PlayerData, state: GameState, previous_action) -> float:
-        steps_airborne = self._airborne_steps.get(player.car_id, 0)
-
-        if not player.on_ground:
-            steps_airborne += 1
-            self._airborne_steps[player.car_id] = steps_airborne
-        else:
+        if player.on_ground:
             self._airborne_steps[player.car_id] = 0
             return 0.0
 
-        ball_height = max(0.0, state.ball.position[2])
-        height_term = self.height_scale * min(ball_height / self.ceiling_height, 1.0)
-        time_term = steps_airborne * self.time_scale
+        steps_airborne = self._airborne_steps.get(player.car_id, 0) + 1
+        self._airborne_steps[player.car_id] = steps_airborne
+        return steps_airborne * self.time_scale
 
-        return height_term * time_term
+
+class AirHeightReward(RewardFunction):
+    def __init__(self, ceiling_height: float = common_values.CEILING_Z, height_scale: float = 1.0):
+        super().__init__()
+        self.ceiling_height = ceiling_height
+        self.height_scale = height_scale
+
+    def reset(self, initial_state: GameState):
+        pass
+
+    def get_reward(self, player: PlayerData, state: GameState, previous_action) -> float:
+        if player.on_ground:
+            return 0.0
+
+        ball_height = max(0.0, state.ball.position[2])
+        return self.height_scale * min(ball_height / self.ceiling_height, 1.0)
+
 
 
 class AerialTouchImpulseReward(RewardFunction):
