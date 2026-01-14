@@ -27,7 +27,7 @@ config = {
         ), 2),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
             min_boost=0.7
-        ), 3),
+        ), 5),
     ],
     "terminal_conditions": [
         GoalScoredCondition(),
