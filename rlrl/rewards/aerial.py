@@ -35,29 +35,23 @@ class SimpleAerialReward(RewardFunction):
 
 
 class AirTimeReward(RewardFunction):
-    def __init__(self, time_scale: float = 0.002):
+    def __init__(self):
         super().__init__()
-        self.time_scale = time_scale
-        self._airborne_steps = {}
 
     def reset(self, initial_state: GameState):
-        self._airborne_steps.clear()
+        pass
 
     def get_reward(self, player: PlayerData, state: GameState, previous_action) -> float:
         if player.on_ground:
-            self._airborne_steps[player.car_id] = 0
             return 0.0
 
-        steps_airborne = self._airborne_steps.get(player.car_id, 0) + 1
-        self._airborne_steps[player.car_id] = steps_airborne
-        return steps_airborne * self.time_scale
+        return 1.0
 
 
 class AirHeightReward(RewardFunction):
-    def __init__(self, ceiling_height: float = common_values.CEILING_Z, height_scale: float = 1.0):
+    def __init__(self, ceiling_height: float = common_values.CEILING_Z):
         super().__init__()
         self.ceiling_height = ceiling_height
-        self.height_scale = height_scale
 
     def reset(self, initial_state: GameState):
         pass
@@ -67,7 +61,7 @@ class AirHeightReward(RewardFunction):
             return 0.0
 
         ball_height = max(0.0, state.ball.position[2])
-        return self.height_scale * min(ball_height / self.ceiling_height, 1.0)
+        return min(ball_height / self.ceiling_height, 1.0)
 
 
 
@@ -75,13 +69,11 @@ class AerialTouchImpulseReward(RewardFunction):
     def __init__(
         self,
         min_impulse: float = 100.0,
-        impulse_scale: float = 0.001,
         min_boost_spent: float = 0.02,
         min_height: float = 200.0,
     ):
         super().__init__()
         self.min_impulse = min_impulse
-        self.impulse_scale = impulse_scale
         self.min_boost_spent = min_boost_spent
         self.min_height = min_height
         self._prev_ball_vel = None
@@ -111,8 +103,9 @@ class AerialTouchImpulseReward(RewardFunction):
                 impulse = float(np.linalg.norm(delta_v))
 
                 if impulse > self.min_impulse:
-                    reward = (impulse - self.min_impulse) * self.impulse_scale
+                    # Normalize impulse by max car speed + max ball speed approx
+                    reward = impulse / (2300 + 6000)
 
         self._prev_ball_vel = ball_vel
         self._prev_boost = player.boost_amount
-        return reward
+        return min(reward, 1.0)

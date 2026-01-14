@@ -1,37 +1,33 @@
-from rlgym_sim.utils.reward_functions.common_rewards import VelocityPlayerToBallReward, VelocityBallToGoalReward, EventReward, SaveBoostReward
+from rlgym_sim.utils.reward_functions.common_rewards import VelocityPlayerToBallReward, VelocityBallToGoalReward, SaveBoostReward
 from rlgym_sim.utils.state_setters.random_state import RandomState
-from rlgym_sim.utils.terminal_conditions.common_conditions import NoTouchTimeoutCondition, GoalScoredCondition
+from rlgym_sim.utils.terminal_conditions.common_conditions import NoTouchTimeoutCondition, GoalScoredCondition, TimeoutCondition
 
-from rlrl.rewards.aerial import AerialTouchImpulseReward, SimpleAerialReward, AirTimeReward, AirHeightReward
+from rlrl.rewards.aerial import SimpleAerialReward, AirTimeReward, AirHeightReward
 from rlrl.rewards.boost import VelocityPlayerToBoostReward
+from rlrl.rewards.events import TouchReward, TeamGoalReward, ConcedeReward, DemoReward, BoostPickupReward
 from rlrl.consts import GAME_TICK_RATE, TICK_SKIP
 
 config = {
     "rewards": [
-        ("event", EventReward(
-            touch=12,
-            team_goal=50,
-            concede=-50,
-            boost_pickup=8,
-            demo=8,
-        ), 1),
+        ("touch", TouchReward(), 12),
+        ("team_goal", TeamGoalReward(), 50),
+        ("concede", ConcedeReward(), 50),
+        ("boost_pickup", BoostPickupReward(), 8),
+        ("demo", DemoReward(), 8),
         ("vel_player_to_ball", VelocityPlayerToBallReward(), 2.5),
-        ("vel_ball_to_goal", VelocityBallToGoalReward(), 8),
-        ("save_boost", SaveBoostReward(), 0.45),
-        ("simple_aerial", SimpleAerialReward(), 8),
-        ("air_time", AirTimeReward(
-            time_scale=0.02
-        ), 3),
-        ("air_height", AirHeightReward(
-            height_scale=0.5
-        ), 2),
+        ("vel_ball_to_goal", VelocityBallToGoalReward(), 5),
+        ("save_boost", SaveBoostReward(), 0.1),
+        ("simple_aerial", SimpleAerialReward(), 4),
+        ("air_time", AirTimeReward(), 0.3),
+        ("air_height", AirHeightReward(), 0.4),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
             min_boost=0.7
-        ), 5),
+        ), 2),
     ],
     "terminal_conditions": [
         GoalScoredCondition(),
-        NoTouchTimeoutCondition(int(round(20 * GAME_TICK_RATE / TICK_SKIP)))
+        NoTouchTimeoutCondition(int(round(20 * GAME_TICK_RATE / TICK_SKIP))),
+        TimeoutCondition(int(round(300 * GAME_TICK_RATE / TICK_SKIP))),
     ],
     "state_setter": RandomState(ball_rand_speed=False, cars_rand_speed=True, cars_on_ground=False),
     "hyperparameters": {
