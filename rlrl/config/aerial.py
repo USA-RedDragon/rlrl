@@ -14,12 +14,12 @@ config = {
         ("concede", ConcedeReward(), -10.0),
         ("boost_pickup", BoostPickupReward(), 5.0),
         ("demo", DemoReward(), 3.0),
-        ("vel_player_to_ball", VelocityPlayerToBallReward(), 0.15),
+        ("vel_player_to_ball", VelocityPlayerToBallReward(), 0.5),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 0.3),
         ("save_boost", SaveBoostReward(), 0.01),
         ("simple_aerial", SimpleAerialReward(), 15.0),
         ("air_time", AirTimeReward(), 0.01),
-        ("air_height", AirHeightReward(), 0.01),
+        ("air_height", AirHeightReward(), 0.1),
         ("vel_player_to_boost", VelocityPlayerToBoostReward(
             min_boost=0.6
         ), 0.1),
@@ -27,7 +27,7 @@ config = {
     "terminal_conditions": [
         GoalScoredCondition(),
         NoTouchTimeoutCondition(int(round(20 * GAME_TICK_RATE / TICK_SKIP))),
-        TimeoutCondition(int(round(300 * GAME_TICK_RATE / TICK_SKIP))),
+        TimeoutCondition(int(round(60 * GAME_TICK_RATE / TICK_SKIP))),
     ],
     "state_setter": RandomState(ball_rand_speed=False, cars_rand_speed=True, cars_on_ground=False),
     "hyperparameters": {
