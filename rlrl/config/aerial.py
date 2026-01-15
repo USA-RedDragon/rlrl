@@ -36,7 +36,7 @@ config = {
         "ts_per_iteration": 48_000,
         "sac_policy_delay": 3,
         "sac_batch_size": 3_000,
-        "sac_ent_coef": 0.075,
+        "sac_ent_coef": 'auto',
         "sac_learning_rate": 2.6e-4,
         "sac_learning_starts": 100_000,
         "sac_train_freq": 6,
