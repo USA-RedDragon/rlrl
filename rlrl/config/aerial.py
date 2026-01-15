@@ -14,7 +14,7 @@ config = {
         ("concede", ConcedeReward(), -10.0),
         ("boost_pickup", BoostPickupReward(), 5.0),
         ("demo", DemoReward(), 3.0),
-        ("vel_player_to_ball", VelocityPlayerToBallReward(), 0.5),
+        ("vel_player_to_ball", VelocityPlayerToBallReward(), 0.2),
         ("vel_ball_to_goal", VelocityBallToGoalReward(), 0.3),
         ("save_boost", SaveBoostReward(), 0.01),
         ("simple_aerial", SimpleAerialReward(), 15.0),
