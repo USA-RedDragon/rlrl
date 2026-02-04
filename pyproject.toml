@@ -3,7 +3,7 @@ name = "rlrl"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13.11"
+requires-python = ">=3.14.3"
 dependencies = [
     "rlgym-sac",
     "rlgym-sim",
