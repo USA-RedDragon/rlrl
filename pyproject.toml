@@ -7,7 +7,7 @@ requires-python = ">=3.13.11"
 dependencies = [
     "rlgym-sac",
     "rlgym-sim",
-    "rocketsim>=2.1.1.post4",
+    "rocketsim>=2.2.0",
     "torch>=2.9.1",
 ]
 
